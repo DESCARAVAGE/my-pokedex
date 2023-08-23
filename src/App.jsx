@@ -3,16 +3,10 @@ import "./App.css";
 import MyTitle from "./components/MyTitle";
 import PokemonCard from "./components/PokemonCard";
 import "./components/PokemonCard.css";
+import NavBar from "./components/NavBar";
 
 function App() {
   const [pokemonIndex, setPokemonIndex] = useState(0);
-  const handleClickBefore = () => {
-    setPokemonIndex(pokemonIndex - 1);
-  };
-
-  const handleClickAfter = () => {
-    setPokemonIndex(pokemonIndex + 1);
-  };
 
   /* const handleClickConsole = () => {
     console.log(pokemonIndex);
@@ -46,22 +40,14 @@ function App() {
   ];
 
   const pokemon = pokemonList[pokemonIndex];
+  const countList = pokemonList.length - 1;
 
   return (
     <>
       <div>
         <MyTitle />
         <PokemonCard pokemon={pokemon} />
-        {pokemonIndex > 0 ? (
-          <button onClick={handleClickBefore}>Précédent</button>
-        ) : (
-          ""
-        )}
-        {pokemonIndex < pokemonList.length - 1 ? (
-          <button onClick={handleClickAfter}>Suivant</button>
-        ) : (
-          ""
-        )}
+        <NavBar pokemonIndex={pokemonIndex} setPokemonIndex={setPokemonIndex} countList={countList}/>
         {/* <button onClick={handleClickConsole}>Console de pokemonIndex</button> */}
       </div>
     </>
