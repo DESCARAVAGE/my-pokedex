@@ -1,12 +1,21 @@
-import { useState } from "react";
 import "./App.css";
+import "./components/PokemonCard.css";
 import MyTitle from "./components/MyTitle";
 import PokemonCard from "./components/PokemonCard";
-import "./components/PokemonCard.css";
 import NavBar from "./components/NavBar";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function App() {
   const [pokemonIndex, setPokemonIndex] = useState(0);
+  const [showAlert, setShowAlert] = useState(true);
+
+  useEffect(() => {
+    if (showAlert) {
+      alert("Hello pokemon trainer :)");
+      setShowAlert(false);
+    }
+  }, [showAlert]);
 
   /* const handleClickConsole = () => {
     console.log(pokemonIndex);
@@ -47,7 +56,11 @@ function App() {
       <div>
         <MyTitle />
         <PokemonCard pokemon={pokemon} />
-        <NavBar pokemonIndex={pokemonIndex} setPokemonIndex={setPokemonIndex} countList={countList}/>
+        <NavBar
+          pokemonIndex={pokemonIndex}
+          setPokemonIndex={setPokemonIndex}
+          countList={countList}
+        />
         {/* <button onClick={handleClickConsole}>Console de pokemonIndex</button> */}
       </div>
     </>
